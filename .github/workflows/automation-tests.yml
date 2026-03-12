@@ -49,5 +49,7 @@ jobs:
       - name: Upload Serenity Reports
         uses: actions/upload-artifact@v4
         with:
-          name: serenity-report
-          path: target/site/serenity
+          name: serenity-report-${{ matrix.browser }}
+          path: |
+            target/site/serenity
+            target/serenity
