@@ -19,7 +19,7 @@ public class LoginStepsCodeSmell {
 
     @When("user navigates to {string}")
     public void navigateTo(String url) {
-        // ISSUE #10: Environment URL hard-coded — should come from serenity.conf
+        // ISSUE #10: Environment URL hard-coded — should come from serenity.conf - review
         loginPage.getDriver().get("https://uat.homeoffice.gov.uk/" + url); // <<< ISSUE #10
     }
 
