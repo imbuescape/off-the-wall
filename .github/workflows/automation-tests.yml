@@ -81,7 +81,7 @@ jobs:
 
   zap-security-scan:
 
-    needs: sonar-scan
+    needs: run-tests #sonar-scan
     runs-on: ubuntu-latest
 
     steps:
