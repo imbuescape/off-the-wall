@@ -78,3 +78,25 @@ jobs:
             -Dsonar.organization=${{ secrets.SONAR_ORG }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  zap-security-scan:
+
+    needs: sonar-scan
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: OWASP ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.11.0
+        with:
+          target: 'https://www.saucedemo.com'
+          fail_action: true
+
+      - name: Upload ZAP Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-report
+          path: report_html.html
